@@ -1,0 +1,5 @@
+{
+  "name": "On-boarding Schema",
+  "schemaPath": "src/main/resources/graphql/schema.graphqls",
+  "extensions": {}
+}

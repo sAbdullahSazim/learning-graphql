@@ -1,0 +1,8 @@
+mutation OptionalButRecommendedQueryName ($productCreateReq: ProductCreateReq!) {
+    createProduct(productCreateReq: $productCreateReq){
+        id,
+        name,
+        description,
+        imageUrl
+    }
+}

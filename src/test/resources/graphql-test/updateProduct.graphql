@@ -1,0 +1,9 @@
+# need to call via variable
+mutation {
+    updateProduct(product: {id: $id,name: $name, description: $description, imageUrl: $imageUrl}){
+        id,
+        name,
+        description,
+        imageUrl
+    }
+}

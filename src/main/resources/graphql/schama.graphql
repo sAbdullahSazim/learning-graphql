@@ -1,0 +1,56 @@
+type Query {
+    products: [Product]
+}
+type Mutation {
+    createProduct(productCreateReq: ProductCreateReq!): Product,
+    updateProduct(product: ProductUpdateReq): Product,
+    deleteProduct(id: ID!): Boolean
+}
+extend type Query {
+    persons:[Person]
+}
+extend type Mutation {
+    createAccount(name: String!): Person
+    deleteAccount(name: String!): Person
+}
+extend type Query {
+    conversations(personID: ID!): [Conversation]
+    messages(conversationID: ID!): [Message]
+}
+extend type Mutation {
+    sendMessage(fromPersonID: ID!,toPersonID: ID!, text: String!): Message
+    deleteMessage(messageID: ID!): Message
+}
+input ProductCreateReq{
+    name: String!,
+    description: String!,
+    imageUrl: String,
+}
+input ProductUpdateReq{
+    id: ID!
+    name: String!,
+    description: String!,
+    imageUrl: String,
+}
+type Product{
+    id: ID!
+    name: String!,
+    description: String!,
+    imageUrl: String!
+}
+type Person{
+    id: ID!
+    name: String!,
+    conversations: [Conversation]
+}
+type Conversation{
+    id: ID!
+    person: Person!
+    messages: [Message]
+}
+type Message{
+    id:ID!
+    sender: Person!
+    receiver: Person!
+    text: String!
+}
