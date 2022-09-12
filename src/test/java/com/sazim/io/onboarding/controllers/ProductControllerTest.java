@@ -3,8 +3,7 @@ package com.sazim.io.onboarding.controllers;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
-import com.sazim.io.onboarding.models.Product;
-import lombok.Builder;
+import com.sazim.io.onboarding.records.ProductCreateReq;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.graphql.GraphQlTest;
@@ -21,16 +20,6 @@ class ProductControllerTest {
     private ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
     private ObjectMapper om = new ObjectMapper();
 
-    @Builder
-    record ProductCreateReq(
-            String name,
-            String description,
-            String imageUrl
-    ) {
-    }
-
-    ;
-
     @Test
     void products() {
     }
@@ -46,10 +35,10 @@ class ProductControllerTest {
 
         execute.path("name")
                 .entity(String.class)
-                .satisfies(name -> name.equals(product.name))
+                .satisfies(name -> name.equals(product.name()))
                 .path("description")
                 .entity(String.class)
-                .satisfies(description -> description.equals(product.description))
+                .satisfies(description -> description.equals(product.description()))
                 .path("id")
                 .entity(Long.class)
                 .satisfies(Objects::nonNull);

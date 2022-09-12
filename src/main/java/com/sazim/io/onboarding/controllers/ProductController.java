@@ -1,6 +1,7 @@
 package com.sazim.io.onboarding.controllers;
 
 import com.sazim.io.onboarding.models.Product;
+import com.sazim.io.onboarding.records.ProductCreateReq;
 import com.sazim.io.onboarding.repositories.ProductRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.graphql.data.method.annotation.Argument;
@@ -42,4 +43,4 @@ public class ProductController {
         return true;
     }
 }
-record ProductCreateReq(String name,String description, String imageUrl){}
+
